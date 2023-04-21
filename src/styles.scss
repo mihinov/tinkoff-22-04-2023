@@ -27,4 +27,13 @@ body {
 	background-color: var(--bgColor);
 	color: var(--color);
 	display: flow-root;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+	max-width: 1000px;
+	padding: 0 15px;
+	margin: 0 auto;
+	display: block;
+	width: 100%;
 }
