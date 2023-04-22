@@ -1,10 +1,8 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Observable, interval, startWith } from 'rxjs';
-import { map, takeWhile, filter, tap } from 'rxjs/operators';
-import { fadeInAnimation } from 'src/app/animations/animations';
+import { Observable, interval } from 'rxjs';
+import { map, takeWhile, tap } from 'rxjs/operators';
 import { NavigationErrorRouteService } from 'src/app/services/navigation.service';
 
 @UntilDestroy()
