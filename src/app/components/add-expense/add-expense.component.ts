@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Expense, ExpenseDto } from 'src/app/interfaces/interfaces';
 import { ExpenseService } from 'src/app/services/expense.service';
@@ -7,7 +7,8 @@ import { first } from 'rxjs';
 @Component({
   selector: 'app-add-expense',
   templateUrl: './add-expense.component.html',
-  styleUrls: ['./add-expense.component.scss']
+  styleUrls: ['./add-expense.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddExpenseComponent {
 	public expenseForm = new FormGroup({

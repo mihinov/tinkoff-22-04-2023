@@ -27,13 +27,9 @@ export class ExpenseService {
     );
 	}
 
-	public add(expense: ExpenseDto): Observable<Expense> {
+	public add(expense: ExpenseDto): Observable<Expense[]> {
 		return this.httpExpenseService.add(expense).pipe(
-      // tap((newExpense) => {
-      //   const expenses = this._behSubjExpenses.getValue();
-      //   expenses.push(newExpense);
-      //   this._behSubjExpenses.next(expenses);
-      // })
+      switchMap(() => this.getAll())
     );
 	}
 
