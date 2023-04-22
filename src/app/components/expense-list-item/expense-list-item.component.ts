@@ -25,18 +25,18 @@ export class ExpenseListItemComponent {
 		const dialogRef = this.dialog.open(EditExpensePopupComponent, {
 			width: '400px',
 			data: this.expense,
-			enterAnimationDuration: '600ms',
-			exitAnimationDuration: '600ms'
+			enterAnimationDuration: '300ms',
+			exitAnimationDuration: '300ms'
 		});
 
-		dialogRef.afterClosed()
-		.pipe(
-			first()
-		)
-		.subscribe((result) => {
-			if (result) {
-				this.expenseService.update(result).subscribe();
-			}
-		});
+		// dialogRef.afterClosed()
+		// .pipe(
+		// 	first()
+		// )
+		// .subscribe((result) => {
+		// 	if (result) {
+		// 		this.expenseService.update(result).subscribe();
+		// 	}
+		// });
 	}
 }

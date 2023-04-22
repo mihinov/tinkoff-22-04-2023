@@ -1,1 +1,32 @@
-<p>edit-expense-popup works!</p>
+<h2 mat-dialog-title>Редактировать расход</h2>
+<div mat-dialog-content>
+  <form [formGroup]="expenseForm">
+    <mat-form-field>
+			<mat-label>Дата</mat-label>
+			<input matInput [matDatepicker]="picker" formControlName="date">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-error *ngIf="expenseForm.get('date')?.invalid">Введите дату</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Сумма</mat-label>
+			<input matInput type="number" formControlName="amount">
+			<mat-error *ngIf="expenseForm.get('amount')?.invalid">Введите сумму</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Категория</mat-label>
+			<input matInput type="text" formControlName="category">
+			<mat-error *ngIf="expenseForm.get('category')?.invalid">Введите категорию</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Описание</mat-label>
+			<textarea matInput formControlName="description"></textarea>
+			<mat-error *ngIf="expenseForm.get('description')?.invalid">Введите описание расхода</mat-error>
+		</mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Закрыть</button>
+  <button mat-button color="primary" (click)="onSubmit()">Сохранить</button>
+</div>

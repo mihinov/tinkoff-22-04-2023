@@ -1,11 +1,3 @@
 {
-  "expenses": [
-    {
-      "date": "2023-04-04T21:00:00.000Z",
-      "amount": 2321,
-      "category": "asdas",
-      "description": "asdas",
-      "id": 1
-    }
-  ]
+  "expenses": []
 }
