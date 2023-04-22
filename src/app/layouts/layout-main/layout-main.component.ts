@@ -9,9 +9,5 @@ import { fadeInAnimation } from 'src/app/animations/animations';
 	animations: [fadeInAnimation]
 })
 export class LayoutMainComponent {
-	constructor(private contexts: ChildrenOutletContexts) {}
-
-	getRouteAnimationData(outlet: RouterOutlet) {
-		return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
-	}
+	constructor() {}
 }
