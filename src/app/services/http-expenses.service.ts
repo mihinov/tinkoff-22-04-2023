@@ -34,8 +34,12 @@ export class HttpExpensesService {
     return this.http.put<Expense>(url, expense);
   }
 
-  public delete(id: number): Observable<{}> {
+  public deleteById(id: number): Observable<{}> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url);
   }
+
+	public deleteAll(): Observable<{}> {
+		return this.http.delete<{}>(this.apiUrl);
+	}
 }
