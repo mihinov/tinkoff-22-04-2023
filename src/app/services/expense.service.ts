@@ -10,9 +10,6 @@ export class ExpenseService {
 
 	private _behSubjExpenses = new BehaviorSubject([] as Expense[]);
 	public expenses$: Observable<Expense[]> = this._behSubjExpenses
-	.pipe(
-		tap(item => console.log(item))
-	);
 
   constructor(
 		private httpExpenseService: HttpExpenseService
@@ -21,15 +18,20 @@ export class ExpenseService {
 	public getAll(): Observable<Expense[]> {
 		return this.httpExpenseService.getAll().pipe(
       tap((expenses) => {
-				console.log(expenses);
         this._behSubjExpenses.next(expenses);
       })
     );
 	}
 
-	public add(expense: ExpenseDto): Observable<Expense[]> {
+	public add(expense: ExpenseDto): Observable<Expense> {
 		return this.httpExpenseService.add(expense).pipe(
-      switchMap(() => this.getAll())
+      tap(expense => {
+				const expenses = this._behSubjExpenses.getValue();
+
+				expenses.push(expense);
+				this._behSubjExpenses.next(expenses);
+				return
+			})
     );
 	}
 

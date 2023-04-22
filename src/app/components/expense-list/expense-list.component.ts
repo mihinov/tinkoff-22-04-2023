@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Expense } from 'src/app/interfaces/interfaces';
 import { ExpenseService } from 'src/app/services/expense.service';
 import { Observable, first, tap } from 'rxjs';
@@ -7,7 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
 	selector: 'app-expense-list',
 	templateUrl: './expense-list.component.html',
-	styleUrls: ['./expense-list.component.scss']
+	styleUrls: ['./expense-list.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExpenseListComponent implements OnInit {
 
@@ -19,9 +20,5 @@ export class ExpenseListComponent implements OnInit {
 
 	ngOnInit(): void {
 
-	}
-
-	public trackByFn(index: any, item: any) {
-		return item.id; // unique id corresponding to the item
 	}
 }
