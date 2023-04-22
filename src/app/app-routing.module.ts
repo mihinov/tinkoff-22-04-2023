@@ -6,8 +6,8 @@ import { PageMainComponent } from './pages/page-main/page-main.component';
 
 const routes: Routes = [
 	{ path: '', component: LayoutMainComponent, children: [
-		{ path: '', component: PageMainComponent, pathMatch: 'full' },
-		{ path: 'error', component: PageErrorComponent },
+		{ path: '', component: PageMainComponent, pathMatch: 'full', data: { animation: 'PageMainComponent' } },
+		{ path: 'error', component: PageErrorComponent, data: { animation: 'PageErrorComponent' } },
 		{ path: '**', redirectTo: 'error' },
 	] },
 ];

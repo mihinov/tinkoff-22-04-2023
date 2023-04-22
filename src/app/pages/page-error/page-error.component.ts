@@ -4,13 +4,14 @@ import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable, interval, startWith } from 'rxjs';
 import { map, takeWhile, filter, tap } from 'rxjs/operators';
+import { fadeInAnimation } from 'src/app/animations/animations';
 import { NavigationErrorRouteService } from 'src/app/services/navigation.service';
 
 @UntilDestroy()
 @Component({
 	selector: 'app-page-error',
 	templateUrl: './page-error.component.html',
-	styleUrls: ['./page-error.component.scss']
+	styleUrls: ['./page-error.component.scss'],
 })
 export class PageErrorComponent implements OnInit {
 	private readonly secondsLeftConst: number = 5;
@@ -23,7 +24,7 @@ export class PageErrorComponent implements OnInit {
 		tap(count => {
 			this.secondsLeft = count;
 			if (count === 0) {
-				this.router.navigate(['/']);
+				this.router.navigate(['/'], { queryParamsHandling: 'preserve', preserveFragment: true});
 			}
 		}),
 		untilDestroyed(this)
