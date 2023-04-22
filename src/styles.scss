@@ -38,3 +38,24 @@ body {
 	display: block;
 	width: 100%;
 }
+
+.mat-mdc-card {
+  background-color: var(--bgColor) !important;
+	color: var(--color) !important;
+	gap: 1rem;
+	box-shadow: none !important;
+}
+
+.mat-mdc-card-subtitle {
+	color: var(--color) !important;
+}
+
+.mat-card-line {
+	display: flex !important;
+	align-items: center;
+	gap: 1rem;
+}
+
+.mdc-card__actions {
+	gap: 1rem;
+}

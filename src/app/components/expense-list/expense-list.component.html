@@ -1,1 +1,9 @@
-<p>expense-list works!</p>
+<div class="expense-list">
+	<ng-container *ngIf="expenses$ | async as expenses">
+		<ng-container *ngFor="let expense of expenses; trackBy: trackByFn">
+			<div class="expense-item">
+				<app-expense-list-item [expense]="expense"></app-expense-list-item>
+			</div>
+		</ng-container>
+	</ng-container>
+</div>

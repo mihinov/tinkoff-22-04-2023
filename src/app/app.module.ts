@@ -9,6 +9,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { PageMainComponent } from './pages/page-main/page-main.component';
@@ -20,6 +23,8 @@ import { AddExpenseComponent } from './components/add-expense/add-expense.compon
 import { ExpenseListComponent } from './components/expense-list/expense-list.component';
 
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { EditExpensePopupComponent } from './components/edit-expense-popup/edit-expense-popup.component';
+import { ExpenseListItemComponent } from './components/expense-list-item/expense-list-item.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,9 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     LayoutMainComponent,
     FooterComponent,
     AddExpenseComponent,
-    ExpenseListComponent
+    ExpenseListComponent,
+    EditExpensePopupComponent,
+    ExpenseListItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +52,9 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 		MatInputModule,
 		MatButtonModule,
 		MatDatepickerModule,
+		MatDialogModule,
+		MatCardModule,
+		MatIconModule
   ],
 	providers: [
 		{ provide: MAT_DATE_LOCALE, useValue: 'ru-RU' }

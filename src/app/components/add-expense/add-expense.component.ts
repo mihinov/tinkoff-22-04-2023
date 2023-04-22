@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Expense, ExpenseDto } from 'src/app/interfaces/interfaces';
 import { ExpenseService } from 'src/app/services/expense.service';
@@ -30,11 +30,13 @@ export class AddExpenseComponent {
       category: this.expenseForm.value.category as unknown as string,
       description: this.expenseForm.value.description as unknown as string
     };
+
     this.expenseService.add(expenseDto)
 		.pipe(
 			first()
 		)
 		.subscribe();
+
     this.expenseForm.reset();
   }
 }
