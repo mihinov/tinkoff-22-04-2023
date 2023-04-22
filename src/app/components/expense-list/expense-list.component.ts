@@ -2,12 +2,21 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { Expense } from 'src/app/interfaces/interfaces';
 import { ExpenseService } from 'src/app/services/expense.service';
 import { Observable, first, tap } from 'rxjs';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
 	selector: 'app-expense-list',
 	templateUrl: './expense-list.component.html',
 	styleUrls: ['./expense-list.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	animations: [
+		trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms', style({ opacity: 1 }))
+			])
+    ])
+	]
 })
 export class ExpenseListComponent implements OnInit {
 

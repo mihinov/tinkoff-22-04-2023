@@ -1,7 +1,7 @@
 <div class="expense-list">
 	<ng-container *ngIf="expenses$ | async as expenses">
 		<ng-container *ngFor="let expense of expenses">
-			<div class="expense-item">
+			<div class="expense-item" @fadeIn>
 				<app-expense-list-item [expense]="expense"></app-expense-list-item>
 			</div>
 		</ng-container>
