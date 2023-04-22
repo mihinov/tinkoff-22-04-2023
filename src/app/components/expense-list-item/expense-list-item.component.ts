@@ -24,7 +24,9 @@ export class ExpenseListItemComponent {
 	public openEditExpensePopup() {
 		const dialogRef = this.dialog.open(EditExpensePopupComponent, {
 			width: '400px',
-			data: this.expense
+			data: this.expense,
+			enterAnimationDuration: '600ms',
+			exitAnimationDuration: '600ms'
 		});
 
 		dialogRef.afterClosed()

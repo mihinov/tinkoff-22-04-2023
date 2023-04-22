@@ -33,9 +33,6 @@ export class AddExpenseComponent {
     };
 
     this.expenseService.add(expenseDto)
-		.pipe(
-			first()
-		)
 		.subscribe();
 
     this.expenseForm.reset();

@@ -13,7 +13,9 @@ export class ExpenseService {
 
   constructor(
 		private httpExpenseService: HttpExpenseService
-	) { }
+	) {
+		this.getAll().subscribe();
+	}
 
 	public getAll(): Observable<Expense[]> {
 		return this.httpExpenseService.getAll().pipe(
