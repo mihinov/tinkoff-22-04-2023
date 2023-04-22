@@ -1,6 +1,13 @@
 export interface Expense {
   id: number;
-  name: string;
+  description: string;
+  category: string;
+  amount: number;
+  date: Date;
+}
+
+export interface ExpenseDto {
+	description: string;
   category: string;
   amount: number;
   date: Date;

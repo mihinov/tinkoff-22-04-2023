@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, switchMap, tap } from 'rxjs';
-import { Expense } from '../interfaces/interfaces';
-import { HttpExpensesService } from './http-expenses.service';
+import { Expense, ExpenseDto } from '../interfaces/interfaces';
+import { HttpExpenseService } from './http-expense.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExpensesService {
+export class ExpenseService {
 
 	private _behSubjExpenses = new BehaviorSubject([] as Expense[]);
 	public expenses$: Observable<Expense[]> = this._behSubjExpenses.asObservable();
 
   constructor(
-		private httpExpensesService: HttpExpensesService
+		private httpExpenseService: HttpExpenseService
 	) { }
 
 	public getAll(): Observable<Expense[]> {
-		return this.httpExpensesService.getAll().pipe(
+		return this.httpExpenseService.getAll().pipe(
       tap((expenses) => {
         this._behSubjExpenses.next(expenses);
       })
     );
 	}
 
-	public add(expense: Expense): Observable<Expense> {
-		return this.httpExpensesService.add(expense).pipe(
+	public add(expense: ExpenseDto): Observable<Expense> {
+		return this.httpExpenseService.add(expense).pipe(
       tap((newExpense) => {
         const expenses = this._behSubjExpenses.getValue();
         expenses.push(newExpense);
@@ -33,8 +33,8 @@ export class ExpensesService {
     );
 	}
 
-	public addAll(expenses: Expense[]): Observable<Expense[]> {
-		return this.httpExpensesService.addAll(expenses).pipe(
+	public addAll(expenses: ExpenseDto[]): Observable<Expense[]> {
+		return this.httpExpenseService.addAll(expenses).pipe(
       tap((newExpenses) => {
         const currentExpenses = this._behSubjExpenses.getValue();
         const updatedExpenses = [...currentExpenses, ...newExpenses];
@@ -44,7 +44,7 @@ export class ExpensesService {
 	}
 
 	public update(expense: Expense): Observable<Expense> {
-		return this.httpExpensesService.update(expense).pipe(
+		return this.httpExpenseService.update(expense).pipe(
       tap((updatedExpense) => {
         const expenses = this._behSubjExpenses.getValue();
         const index = expenses.findIndex((e) => e.id === updatedExpense.id);
@@ -55,7 +55,7 @@ export class ExpensesService {
 	}
 
 	public deleteById(id: number): Observable<{}> {
-    return this.httpExpensesService.deleteById(id).pipe(
+    return this.httpExpenseService.deleteById(id).pipe(
       tap(() => {
         const expenses = this._behSubjExpenses.getValue().filter((e) => e.id !== id);
         this._behSubjExpenses.next(expenses);
@@ -64,7 +64,7 @@ export class ExpensesService {
   }
 
 	public deleteAllExpenses(): Observable<{}> {
-    return this.httpExpensesService.deleteAll().pipe(
+    return this.httpExpenseService.deleteAll().pipe(
       tap(() => {
         this._behSubjExpenses.next([]);
       })

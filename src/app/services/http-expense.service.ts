@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Expense } from '../interfaces/interfaces';
+import { Expense, ExpenseDto } from '../interfaces/interfaces';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpExpensesService {
+export class HttpExpenseService {
 
   private apiUrl: string = 'http://localhost:5000/expenses';
 
@@ -21,11 +21,11 @@ export class HttpExpensesService {
     return this.http.get<Expense>(url);
   }
 
-  public add(expense: Expense): Observable<Expense> {
+  public add(expense: ExpenseDto): Observable<Expense> {
     return this.http.post<Expense>(this.apiUrl, expense);
   }
 
-	public addAll(expenses: Expense[]): Observable<Expense[]> {
+	public addAll(expenses: ExpenseDto[]): Observable<Expense[]> {
     return this.http.post<Expense[]>(this.apiUrl, expenses);
   }
 
